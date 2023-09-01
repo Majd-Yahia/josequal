@@ -127,8 +127,7 @@
                                             Profile
                                         </x-filament::dropdown.list.item>
 
-                                        <x-filament::dropdown.list.item wire:navigate href="{{route('admin.logout')}}"
-                                            tag="a">
+                                        <x-filament::dropdown.list.item href="{{route('admin.logout')}}" tag="a">
                                             Sign out
                                         </x-filament::dropdown.list.item>
                                     </x-filament::dropdown.list>
@@ -151,7 +150,6 @@
                             {{$slot}}
 
                             @livewire('notifications')
-                            @livewire('database-notifications')
 
                             <!-- /End replace -->
                         </div>

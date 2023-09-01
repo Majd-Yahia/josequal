@@ -2,7 +2,6 @@
 
 namespace App\Traits;
 
-use App\Filters\ActiveFilter;
 use Illuminate\Support\Facades\Pipeline;
 
 trait Filterable
@@ -13,10 +12,7 @@ trait Filterable
 
     public function scopeFilters($query)
     {
-        $filters = [
-            'active' => ActiveFilter::class,
-            ...$this->getFilters(),
-        ];
+        $filters = $this->getFilters();
 
         // Use array_unique to remove duplicates based on class names
         $uniqueFilters = array_unique($filters, SORT_REGULAR);

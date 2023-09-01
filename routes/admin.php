@@ -1,13 +1,12 @@
 <?php
 
 use App\Http\Controllers\Admin\AuthController;
-
 use App\Livewire\Admin\Dashboard;
+use App\Livewire\Admin\Files\FilesList;
 use App\Livewire\Admin\ForgotPassword;
 use App\Livewire\Admin\Login;
 use App\Livewire\Admin\PasswordReset;
 use App\Livewire\Admin\Profile;
-use App\Livewire\Admin\Services\ServicesList;
 use App\Livewire\Admin\Roles\RolesList;
 use App\Livewire\Admin\Users\UsersList;
 use Illuminate\Support\Facades\Route;
@@ -29,16 +28,16 @@ Route::prefix('admin')->as('admin.')->group(function () {
         Route::get('/', Dashboard::class)->name('dashboard');
         Route::get('/profile', Profile::class)->name('profile');
 
-        Route::prefix('users')->as('users.')->group(function () {
+        Route::prefix('users')->as('users.')->middleware(['role_or_permission:Super Admin|users.index'])->group(function () {
             Route::get('/', UsersList::class)->name('index');
         });
 
-        Route::prefix('services')->as('services.')->group(function () {
-            Route::get('/', ServicesList::class)->name('index');
+        Route::prefix('roles')->as('roles.')->middleware(['role_or_permission:Super Admin|roles.index'])->group(function () {
+            Route::get('/', RolesList::class)->name('index');
         });
 
-        Route::prefix('roles')->as('roles.')->group(function () {
-            Route::get('/', RolesList::class)->name('index');
+        Route::prefix('files')->as('files.')->middleware(['role_or_permission:Super Admin|files.index'])->group(function () {
+            Route::get('/', FilesList::class)->name('index');
         });
     });
 });

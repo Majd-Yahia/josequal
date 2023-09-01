@@ -19,7 +19,6 @@
 
     @filamentStyles
     @vite('resources/css/app.css')
-    @vite('resources/css/custom.css')
 
 
     @stack('styles')
@@ -31,7 +30,6 @@
 
     @filamentScripts
     @vite('resources/js/app.js')
-    @vite('resources/js/custom.js')
 
     @stack('scripts')
     <!-- Include additional scripts from child views -->

@@ -26,14 +26,6 @@
                         </svg>
                     </button>
                 </div>
-                <nav class="hidden space-x-10 md:flex">
-                    <a href="{{route('web.about-us')}}" wire:navigate
-                        class="text-base font-medium text-gray-500 hover:text-gray-900">About Us</a>
-                    <a href="{{route('web.services')}}" wire:navigate
-                        class="text-base font-medium text-gray-500 hover:text-gray-900">Services</a>
-                    <a href="{{route('web.contact-us')}}" wire:navigate
-                        class="text-base font-medium text-gray-500 hover:text-gray-900">Contact Us</a>
-                </nav>
                 <div class="items-center justify-end hidden md:flex md:flex-1 lg:w-0">
 
                     <a href="{{route('login')}}"

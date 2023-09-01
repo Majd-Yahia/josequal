@@ -16,7 +16,6 @@ use Filament\Forms\Components\TextInput;
 use Filament\Tables\Actions\CreateAction;
 use Filament\Tables\Columns\IconColumn;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Log;
 
 class RolesList extends BaseTable
 {
@@ -57,11 +56,11 @@ class RolesList extends BaseTable
                     ->mutateRecordDataUsing(function (array $data): array {
                         $data['permissions'] = Role::where('id', $data['id'])->first()->permissions()->pluck('id')->toArray();
                         return $data;
-                    }),
-                DeleteAction::make(),
+                    })->hidden(!auth()->user()->can('roles.edit')),
+                DeleteAction::make()->hidden(!auth()->user()->can('roles.destroy')),
             ])
             ->setBulkActions([
-                DeleteBulkAction::make(),
+                DeleteBulkAction::make()->hidden(!auth()->user()->can('roles.destroy')),
             ])
             ->setFilters([])
             ->setColumns([
@@ -94,7 +93,7 @@ class RolesList extends BaseTable
                         $data =  $model::create($data);
                         $data->syncPermissions($permissions);
                         return $data;
-                    })
+                    })->hidden(!auth()->user()->can('roles.create')),
             ]);
     }
 }

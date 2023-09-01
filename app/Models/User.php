@@ -3,9 +3,12 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Traits\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Http\FileHelpers;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\MediaLibrary\HasMedia;
@@ -20,6 +23,7 @@ class User extends Authenticatable implements HasMedia
     use HasRoles;
     use SoftDeletes;
     use InteractsWithMedia;
+    use Filterable;
 
     protected $fillable = [
         'name',
@@ -46,10 +50,21 @@ class User extends Authenticatable implements HasMedia
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('avatar')->singleFile();
+        $this->addMediaCollection('kml');
     }
 
     public function getAvatarAttribute()
     {
         return $this->getFirstMediaUrl('avatar');
+    }
+
+    public function getKmlAttribute()
+    {
+        return $this->getMediaCollection('kml');
+    }
+
+    public function getFilters(): array
+    {
+        return [];
     }
 }

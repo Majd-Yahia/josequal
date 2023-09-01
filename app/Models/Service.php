@@ -11,6 +11,7 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use App\Filters\ActiveFilter;
 
 class Service extends Model implements HasMedia
 {
@@ -39,7 +40,9 @@ class Service extends Model implements HasMedia
 
     public function getFilters(): array
     {
-        return [];
+        return [
+            ActiveFilter::class,
+        ];
     }
 
     public function registerMediaCollections(): void

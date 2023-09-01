@@ -19,21 +19,27 @@ Breadcrumbs::for('admin.users.index', function (BreadcrumbTrail $trail) {
     $trail->push('Users', route('admin.users.index'));
 });
 
-// Home > Services
-Breadcrumbs::for('admin.services.index', function (BreadcrumbTrail $trail) {
-    $trail->parent('admin.dashboard');
-    $trail->push('Services', route('admin.services.index'));
-});
-
 // Home > Roles
 Breadcrumbs::for('admin.roles.index', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.dashboard');
     $trail->push('Roles', route('admin.roles.index'));
 });
 
+// Home > Pages
+Breadcrumbs::for('admin.pages.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.dashboard');
+    $trail->push('Pages', route('admin.pages.index'));
+});
+
+
 Breadcrumbs::for('admin.profile', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.dashboard');
     $trail->push('Profile', route('admin.profile'));
+});
+
+Breadcrumbs::for('admin.files.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.dashboard');
+    $trail->push('Files', route('admin.files.index'));
 });
 
 

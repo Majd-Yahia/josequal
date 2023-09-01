@@ -23,6 +23,7 @@ class BaseTable extends Component implements HasForms, HasTable
     private $bulk_actions = []; // actions type ('delete')
     private $header_actions = []; // actions type ('delete')
     private $model;
+    protected $query;
 
     // private function getColumn($column)
     // {
@@ -86,6 +87,12 @@ class BaseTable extends Component implements HasForms, HasTable
         return $this;
     }
 
+    protected function setQuery($query)
+    {
+        $this->query = $query;
+        return $this;
+    }
+
     protected function setFilters($filters)
     {
         $this->filters = $filters;
@@ -118,8 +125,10 @@ class BaseTable extends Component implements HasForms, HasTable
 
     public function table(Table $table): Table
     {
+        $builder = isset($this->query) ? $this->query : $this->getModel()?->filters();
+
         return $table
-            ->query($this->getModel())
+            ->query($builder)
             ->columns($this->getColumns())
             ->filters($this->getFilters())
             ->actions([

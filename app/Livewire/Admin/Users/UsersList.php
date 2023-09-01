@@ -17,6 +17,7 @@ class UsersList extends BaseTable
 
     public function __construct()
     {
+
         $this->setModel(User::class)
             ->setActions([
                 EditAction::make()
@@ -29,11 +30,12 @@ class UsersList extends BaseTable
                             ->email(),
                         TextInput::make('password')->nullable()->password()->confirmed(),
                         TextInput::make('password_confirmation')->requiredWith('password')->password(),
-                    ]),
-                DeleteAction::make(),
+                    ])
+                    ->hidden(!auth()->user()->can('users.edit')),
+                DeleteAction::make()->hidden(!auth()->user()->can('users.destroy')),
             ])
             ->setBulkActions([
-                DeleteBulkAction::make(),
+                DeleteBulkAction::make()->hidden(!auth()->user()->can('users.destroy')),
             ])
             ->setFilters([])
             ->setColumns([
@@ -58,7 +60,7 @@ class UsersList extends BaseTable
                         TextInput::make('password_confirmation')
                             ->requiredWith('password')
                             ->password(),
-                    ])
+                    ])->hidden(!auth()->user()->can('users.create')),
             ]);
     }
 }

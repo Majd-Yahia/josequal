@@ -14,9 +14,13 @@ class RolesSeeder extends Seeder
      */
     public function run(): void
     {
+        app('cache')
+            ->store(config('permission.cache.store') != 'default' ? config('permission.cache.store') : null)
+            ->forget(config('permission.cache.key'));
+
         Permission::insert($this->data());
 
-        $role_name = "Administrator";
+        $role_name = "Super Admin";
         $role = Role::create(['name' => $role_name, 'description' => $role_name]);
         $role->syncPermissions(Permission::pluck('id')->toArray());
     }
@@ -36,10 +40,7 @@ class RolesSeeder extends Seeder
         $model = [
             'users' => $this->loadRaw(['index', 'create',  'edit', 'destroy']),
             'roles' => $this->loadRaw(['index', 'create',  'edit', 'destroy']),
-            'services' => $this->loadRaw(['index', 'create',  'edit', 'destroy']),
-            // 'contact-us' => $this->loadRaw([]),
-            // 'pages' => $this->loadRaw([]),
-            // 'settings' => $this->loadRaw([]),
+            'files' => $this->loadRaw(['index', 'create',  'destroy']),
         ];
 
         $data = [];

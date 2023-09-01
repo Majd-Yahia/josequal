@@ -1,4 +1,5 @@
-@foreach (config('admin.menu') as $item)
+@foreach (config('menu') as $item)
+@can($item['permission'])
 @php
 $active = Route::currentRouteName() == $item['route'];
 @endphp
@@ -12,4 +13,5 @@ $active = Route::currentRouteName() == $item['route'];
         icon="{{$item['icon']}}" color="white" label="{{$item['name']}}" />
         {{$item['name']}}
 </a>
+@endcan
 @endforeach
