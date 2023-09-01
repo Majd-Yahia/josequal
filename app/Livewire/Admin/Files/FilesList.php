@@ -27,7 +27,8 @@ class FilesList extends BaseTable
 
     public function __construct()
     {
-        $query = Media::where('model_id', Auth::id())
+
+        $query = Media::when(!Auth::user()->hasRole('Super Admin'), fn($query) => $query->where('model_id', Auth::id()))
             ->where('model_type', User::class)
             ->where('collection_name', 'kml')
             ->with('owner');
