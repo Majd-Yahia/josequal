@@ -31,3 +31,6 @@ valid KML format.
 - Add basic error handling to display a message if the file upload fails or if there are issues with the KML 
 file.
 - Allow users to delete the uploaded file and remove its data from the map
+
+# File Example:
+[KML File](public/dwsample1-kml.kml)
