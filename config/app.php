@@ -192,4 +192,6 @@ return [
 
     'google-api-key' => env('GOOGLE_MAPS_API_KEY', null),
 
+    'google-bucket' => env('GOOGLE_BUCKET_NAME', null),
+
 ];

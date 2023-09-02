@@ -41,6 +41,7 @@ class RolesSeeder extends Seeder
             'users' => $this->loadRaw(['index', 'create',  'edit', 'destroy']),
             'roles' => $this->loadRaw(['index', 'create',  'edit', 'destroy']),
             'files' => $this->loadRaw(['index', 'create',  'destroy']),
+            'map' => $this->loadRaw(['index']),
         ];
 
         $data = [];

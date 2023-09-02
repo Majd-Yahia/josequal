@@ -9,7 +9,7 @@
                 <div class="flex justify-start lg:w-0 lg:flex-1">
                     <a href="{{route('web.index')}}" wire:navigate>
                         <span class="sr-only">{{config('app.name')}}</span>
-                        <img class="w-auto h-8 sm:h-10" src="{{asset('assets/logo/svg/Group-5.svg')}}" alt="">
+                        <img class="w-auto h-8 sm:h-10" src="{{asset('assets/logo/svg/josequal.png')}}" alt="">
                     </a>
                 </div>
                 <div class="-my-2 -mr-2 md:hidden">
@@ -45,7 +45,7 @@
             <div class="px-5 pt-5 pb-6">
                 <div class="flex items-center justify-between">
                     <div>
-                        <img class="w-auto h-8" src="{{asset('assets/logo/svg/Group-5.svg')}}"
+                        <img class="w-auto h-8" src="{{asset('assets/logo/svg/josequal.png')}}"
                             alt="{{config('app.name')}}">
                     </div>
                     <div class="-mr-2">

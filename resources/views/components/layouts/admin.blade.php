@@ -38,7 +38,7 @@
                         </div>
 
                         <div class="flex items-center flex-shrink-0 px-4">
-                            <img class="w-auto h-8" src="{{asset('assets/logo/svg/Group-5.svg')}}"
+                            <img class="w-auto h-8" src="{{asset('assets/logo/svg/josequal.png')}}"
                                 alt="{{config('app.name')}}">
                         </div>
                         <div class="flex-1 h-0 mt-5 overflow-y-auto">
@@ -59,7 +59,7 @@
                 <!-- Sidebar component, swap this element with another sidebar if you like -->
                 <div class="flex flex-col flex-1 min-h-0 bg-gray-800">
                     <div class="flex items-center flex-shrink-0 h-16 px-4 bg-gray-900">
-                        <img class="w-auto h-8" src="{{asset('assets/logo/svg/Group-5.svg')}}"
+                        <img class="w-auto h-8" src="{{asset('assets/logo/svg/josequal.png')}}"
                             alt="{{config('app.name')}}">
                     </div>
                     <div class="flex flex-col flex-1 overflow-y-auto">
@@ -103,14 +103,6 @@
                                     </path>
                                 </svg>
                                 </buttontype=> --}}
-
-                                <x-filament::icon-button x-data="{}"
-                                    x-on:click="$dispatch('open-modal', { id: 'database-notifications' })"
-                                    icon="heroicon-o-bell" color="gray" size="lg" class="mr-4" label="Notifications">
-                                    <x-slot name="badge">
-                                        0
-                                    </x-slot>
-                                </x-filament::icon-button>
 
                                 <!-- Profile dropdown -->
                                 <x-filament::dropdown placement="top-start">

@@ -2,30 +2,15 @@
 
 namespace App\Livewire\Admin;
 
-use Google\Cloud\Storage\StorageClient;
+use App\Repository\Files\FilesRepository;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Facades\Http;
 use Livewire\Component;
 
 class Dashboard extends Component
 {
-
-    public function makeApiRequest()
+    public function render(FilesRepository $repository): View
     {
-
-        // Example 2: GET request
-        // $response = Http::get('https://mapsplatformdatasets.googleapis.com/v1/josequal-397616/datasets');
-
-        // Handle the response as needed
-        return response()->json($data);
-    }
-
-    public function render(): View
-    {
-        // $this->makeApiRequest();
-
-
-
-        return view('livewire.admin.dashboard')->layout('components.layouts.admin');
+        $url = $repository->getDefaultKMLUrl();
+        return view('livewire.admin.dashboard', ['url' => $url])->layout('components.layouts.admin');
     }
 }

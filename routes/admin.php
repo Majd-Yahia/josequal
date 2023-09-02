@@ -25,7 +25,7 @@ Route::prefix('admin')->as('admin.')->group(function () {
         Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
         //Livewire Full Page
-        Route::get('/', Dashboard::class)->name('dashboard');
+        Route::get('/', Dashboard::class)->middleware(['role_or_permission:Super Admin|map.index'])->name('dashboard');
         Route::get('/profile', Profile::class)->name('profile');
 
         Route::prefix('users')->as('users.')->middleware(['role_or_permission:Super Admin|users.index'])->group(function () {
