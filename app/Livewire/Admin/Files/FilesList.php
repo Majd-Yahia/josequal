@@ -52,7 +52,7 @@ class FilesList extends BaseTable
 
                         $filePath = Storage::disk('public')->path($data['file']);
                         $storage = new StorageClient([
-                            'keyFile' => json_decode(file_get_contents(base_path('josequal-authentication.json')), true)
+                            'keyFile' => json_decode(file_get_contents(base_path('google-authnetication-example.json')), true)
                         ]);
                         $bucket = $storage->bucket(config('app.google-bucket'));
                         $bucket = $bucket->upload(
